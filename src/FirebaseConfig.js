@@ -1,13 +1,13 @@
 import firebase from "firebase/compat/app"; // old version is import firebase from 'firebase'
 
 const config = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+  apiKey: "AIzaSyAOExQRfKg92tqkytS7Dzikoo6S0ls4lKE",
+  authDomain: "fb-recipes-1ba87.firebaseapp.com",
+  projectId: "fb-recipes-1ba87",
+  storageBucket: "fb-recipes-1ba87.appspot.com",
+  messagingSenderId: "12306676342",
+  appId: "1:12306676342:web:2ac0ff3c3f580e4760bd57",
+  measurementId: "G-9SYZWXTCXK",
 };
 
 if (!firebase.apps.length) {
