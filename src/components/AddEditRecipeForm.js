@@ -1,12 +1,15 @@
 import { useState } from "react";
 
 function AddEditRecipeForm({ handleAddRecipe }) {
+  // eslint-disable-next-line no-unused-vars
   const [recipe, setRecipe] = useState("");
   const [name, setName] = useState("");
   const [publishDate, setPublishDate] = useState("");
   const [category, setCategory] = useState("");
   const [directions, setDirections] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [ingredients, setIngredients] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [ingredientName, setIngredientName] = useState("");
 
   return (
