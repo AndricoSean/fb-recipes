@@ -12,6 +12,21 @@ function AddEditRecipeForm({ handleAddRecipe }) {
   // eslint-disable-next-line no-unused-vars
   const [ingredientName, setIngredientName] = useState("");
 
+  async function handleAddIngredient(e) {
+    if (e.key && e.key !== "Enter") {
+      return;
+    }
+
+    e.preventDefault();
+    if (!ingredientName) {
+      alert("Missing Ingredient Field");
+      return;
+    }
+
+    setIngredients([...ingredients, ingredientName]);
+    setIngredientName("");
+  }
+
   return (
     <form className="add-edit-recipe-form-container">
       <h2>Add a New Recipe</h2>
@@ -65,6 +80,61 @@ function AddEditRecipeForm({ handleAddRecipe }) {
               className="input-text"
             />
           </label>
+        </div>
+      </div>
+      <div className="ingredients-list">
+        <h3 className="text-center">Ingredients</h3>
+        <table className="ingredients-table">
+          <thead>
+            <tr>
+              <th className="table-header">Ingredient</th>
+              <th className="table-header">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ingredients && ingredients.length > 0
+              ? ingredients.map((ingredient) => {
+                  return (
+                    <tr key={ingredient}>
+                      <td className="table-data text-center">{ingredient}</td>
+                      <td className="ingredient-delete-box">
+                        <button
+                          type="button"
+                          className="secondary-button ingredient-delete-button"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
+              : null}
+          </tbody>
+        </table>
+        {ingredients && ingredients.length === 0 ? (
+          <h3 className="text-center no-ingredients">
+            No ingredients added yet
+          </h3>
+        ) : null}
+        <div className="ingredient-form">
+          <label className="ingredient-label">
+            Ingredient:
+            <input
+              type="text"
+              value={ingredientName}
+              onChange={(e) => setIngredientName(e.target.value)}
+              onKeyPress={handleAddIngredient}
+              className="input-text"
+              placeholder="ex. 1/2 cup flour"
+            />
+          </label>
+          <button
+            type="button"
+            className="primary-button add-ingredient-button"
+            onClick={handleAddIngredient}
+          >
+            Add Ingredient
+          </button>
         </div>
       </div>
     </form>
