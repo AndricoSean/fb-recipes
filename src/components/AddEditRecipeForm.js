@@ -27,8 +27,31 @@ function AddEditRecipeForm({ handleAddRecipe }) {
     setIngredientName("");
   }
 
+  async function handleRecipeFormSubmit(e) {
+    e.preventDefault();
+    if (ingredients.length === 0) {
+      alert("Ingredients cannot be empty");
+      return;
+    }
+
+    const isPublished = new Date(publishDate) <= new Date() ? true : false;
+    const newRecipe = {
+      name,
+      category,
+      directions,
+      publishDate: new Date(publishDate),
+      isPublished,
+      ingredients,
+    };
+
+    handleAddRecipe(newRecipe);
+  }
+
   return (
-    <form className="add-edit-recipe-form-container">
+    <form
+      onSubmit={handleRecipeFormSubmit}
+      className="add-edit-recipe-form-container"
+    >
       <h2>Add a New Recipe</h2>
       <div className="top-form-section">
         <div className="fields">
@@ -136,6 +159,11 @@ function AddEditRecipeForm({ handleAddRecipe }) {
             Add Ingredient
           </button>
         </div>
+      </div>
+      <div className="action-buttons">
+        <button type="submit" className="primary-button action-button">
+          Create Recipe
+        </button>
       </div>
     </form>
   );
